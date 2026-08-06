@@ -1,0 +1,14 @@
+.language-box{
+    width: 350px;
+    text-align: center;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 4.5px;
+    justify-content: center;
+}
+
+.letters-section{
+    margin-block: 40px;
+    display: flex;
+    gap : 3px
+}
