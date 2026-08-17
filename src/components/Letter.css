@@ -2,8 +2,11 @@
     width: 40px;
     height: 40px;
     background-color: rgba(240, 255, 255, 0.126);
-    color: white;
     border-bottom: 2px solid white;
     text-align: center;
     align-content: center;
+}
+
+.letter{
+    color: white;
 }

@@ -1,43 +1,42 @@
 import Keyboard from "./Keyboard"
 import Letter from "./Letter"
 import Lang from "./Lang"
+import {languages} from "../languages"
 import "./Main.css"
 import { useState } from "react"
 
 function Main(){
-    const newProgArray =[
-        {value :"HTML", style : {backgroundColor : "#E2680F", color :"white"}} ,
-        {value :"CSS", style : {backgroundColor : "#328AF1", color :"white"}},
-        {value :"Javascriipt", style : {backgroundColor : "#F4EB13", color :"black"}} ,
-        {value :"React", style : {backgroundColor : "#2ED3E9", color :"white"}},
-        {value :"Typescript", style : {backgroundColor : "#298EC6", color :"white"}} ,
-        {value :"Node.js", style : {backgroundColor : "#599137", color :"white"}},
-        {value :"Python", style : {backgroundColor : "#FFD742", color :"black"}} ,
-        {value :"Ruby", style : {backgroundColor : "#D02B2B", color :"white"}},
-        {value :"Assembly", style : {backgroundColor : "#2D519F", color :"white"}}
-    ]
+    const [guessedLetters, setGuessedLetters] = useState([])
 
-    const emptyLetters = new Array(8).fill("")
+    const [progLangArray,setProgLangArray] = useState(languages)
 
-    const [progLangArray,setProgLangArray] = useState(newProgArray)
+    const word = String("react").toUpperCase()
 
-    const [letterBoxes,setLetterBoxes] = useState(emptyLetters)
+    const [currentWord,setCurrentword] = useState(word)
     
-    const langElem = progLangArray.map(key => <Lang value= {key.value} style={key.style}/>)
+    const langElem = progLangArray.map(key => <Lang key={key.name} name= {key.name} style={key.style}/>)
 
-    const letterBoxElems = letterBoxes.map(box => <Letter/>)
+    const wordElem = currentWord.split("").map((letter,index) => <Letter key = {index} value = {letter} isShown = {guessedLetters.includes(letter) ? true :false}/>)
+
+    function addGuessedLetter(guessedLetter){
+        setGuessedLetters(prevArray => 
+            prevArray.includes(guessedLetter) ? prevArray : [...prevArray,guessedLetter])
+    }
+
+    console.log(guessedLetters)
+    console.log(currentWord)
 
     return (
         <>
             <div className="language-box">
                 {langElem}
             </div>
-            <section className="letters-section">
-                {letterBoxElems}
+            <section className="word-section">
+                {wordElem}
             </section>
 
             <section className="keyboard-section">
-                <Keyboard/>
+                <Keyboard setLetter = {addGuessedLetter} currentWord = {currentWord} guessedLetters = {guessedLetters}  />
             </section>
         </>
     )

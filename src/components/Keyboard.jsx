@@ -1,20 +1,42 @@
 import { useState } from "react"
-import Key from "./Key"
 import "./Keyboard.css"
+import {clsx} from "clsx"
 
-function Keyboard(){
-    const [keyArray,setKeyArray] = useState(() => generateNewKeyArray())
+function Keyboard(props){
+    const [keyArray,setKeyArray] = useState("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-    function generateNewKeyArray(){
-        return new Array(26).fill(0).map((_,index) => ({value : String.fromCharCode(65 + index)}))
+    const keyElem = keyArray.split("").map(key => {
+        const isGuessed = props.guessedLetters.includes(key)
+        const isCorrect = isGuessed && props.currentWord.includes(key)
+        const isWrong = isGuessed && !props.currentWord.includes(key)
+        const classes = clsx(
+            "key",
+            {
+                correct : isCorrect,
+                wrong : isWrong
+        })
+            return(
+                <button 
+                    className={classes}
+                    key={key} 
+                    onClick={()=>props.setLetter(key)}
+                >
+                    {key}
+                </button>
+            )}
+        )
+
+    function addGuess(){
+
     }
-    console.log(keyArray)
-    const keyElem = keyArray.map(key => <Key value = {key.value}/>)
 
     return (
         <>
-            <section className="keyboard">
-                {keyElem}
+            <section className="board">
+                <section className="keyboard">
+                    {keyElem}
+                </section>
+                <button className="new-game-btn" >New Game</button>
             </section>
         </>
     )

@@ -1,9 +1,11 @@
 import "./Letter.css"
 
-function Letter(){
+function Letter(props){
     return(
         <>
-            <div className="letter-box">h</div>
+            <div className="letter-box">
+                <span style={{opacity:(props.isShown? 100 : 0)}} className="letter">{props.value}</span>
+            </div>
         </>
     )
 }

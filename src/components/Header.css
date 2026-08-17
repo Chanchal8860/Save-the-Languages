@@ -8,7 +8,25 @@
     font-size: 14px;
     font-weight: 500;
     color:#8E8E8E;
-    margin-block: 5px 50px;
+    margin-block: 5px 10px;
     width: 300px;
     text-align: center;
+}
+
+.game-status{
+    width: 400px;
+    padding-block: 10px;
+    text-align: center;
+    margin-block: 10px 40px;
+    background-color: rgb(158, 115, 222);
+    font-weight: 500;
+}
+
+.game-status h2{
+    font-size: 20px;
+    margin-block: 2px;
+}
+
+.game-status p{
+    margin-block: 2px;
 }

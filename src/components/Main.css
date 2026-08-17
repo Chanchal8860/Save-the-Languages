@@ -1,5 +1,5 @@
 .language-box{
-    width: 350px;
+    width: 300px;
     text-align: center;
     flex-wrap: wrap;
     display: flex;
@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.letters-section{
+.word-section{
     margin-block: 40px;
     display: flex;
     gap : 3px
