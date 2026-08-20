@@ -12,3 +12,42 @@
     display: flex;
     gap : 3px
 }
+
+.game-status{
+    height: 75px;
+    width: 400px;
+    padding-block: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-block: 10px 40px;
+    font-weight: 500;
+}
+
+.game-status h2{
+    font-size: 20px;
+    margin-block: 2px;
+}
+
+.game-status p{
+    margin-block: 2px;
+}
+
+.game-won{
+    background-color: #10A95B;
+}
+
+.game-lost{
+    background-color: #BA2A2A;
+}
+
+.farewell-message {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.farewell{
+    background-color: #7A5EA7;
+    border: 1px dashed #323232;
+}

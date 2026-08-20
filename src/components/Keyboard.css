@@ -17,6 +17,11 @@
     border: none;
 }
 
+.key:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
 .board{
     display: flex;
     flex-direction: column;
@@ -44,3 +49,4 @@
 .wrong{
     background-color: #EC5D49;
 }
+
