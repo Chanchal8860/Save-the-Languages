@@ -7,6 +7,7 @@ import { useState } from "react"
 import {clsx} from "clsx"
 import { getFarewellText } from "../farewellMessage"
 import { words } from "../words"
+import Confetti from 'react-confetti'
 
 function Main(){
     
@@ -34,7 +35,17 @@ function Main(){
 
     const langElem = languages.map((key,index) => <Lang key={key.name} name= {key.name} style={key.style} isLost = {(index+1)<=wrongGuessCount ? true:false}/>)
 
-    const wordElem = currentWord.split("").map((letter,index) => <Letter key = {index} value = {letter} isShown = {guessedLetters.includes(letter) ? true :false}/>)
+
+    const wordElem = currentWord.split("").map((letter,index) => {
+        const missedLetter = (isGameOver && !guessedLetters.includes(letter))
+        return (
+            <Letter 
+                missedLetter = {missedLetter}
+                key = {index} 
+                value = {letter} 
+                isShown = {(guessedLetters.includes(letter) ? true :false) || (isGameOver)}
+            />)
+    })
 
     function addGuessedLetter(guessedLetter){
         setGuessedLetters(prevArray => 
@@ -71,6 +82,7 @@ function Main(){
         if (isGameWon){
             return (
                 <>
+                    <Confetti recycle={false} numberOfPieces={1000}/>
                     <h2>You win!</h2>
                     <p>Well done! 🎉</p>
                 </> 

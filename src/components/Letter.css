@@ -10,3 +10,8 @@
 .letter{
     color: white;
 }
+
+
+.missed-letter{
+    color: #BA2A2A;
+}
